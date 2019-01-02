@@ -90,6 +90,7 @@ public class HomeFragment extends Fragment implements IView {
         recyclerView_item.setAdapter(secondCategoryAdapter);
 
 
+
         flag = false;
         view.findViewById(R.id.fragment_home_common_btn_menu).setOnClickListener(new View.OnClickListener() {
             @Override
