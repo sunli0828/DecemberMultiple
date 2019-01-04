@@ -26,7 +26,7 @@
             android:drawableLeft="@mipmap/login_icon_phone_n_hdpi"/>
 
         <View
-            android:layout_width="@dimen/dp_280"
+            android:layout_width="@dimen/dp_290"
             android:layout_height="@dimen/dp_1"
             android:background="#ffffff"
             android:layout_marginTop="@dimen/dp_2"
@@ -57,7 +57,7 @@
                 />
         </RelativeLayout>
         <View
-            android:layout_width="@dimen/dp_280"
+            android:layout_width="@dimen/dp_290"
             android:layout_height="@dimen/dp_1"
             android:background="#ffffff"
             android:layout_gravity="center"

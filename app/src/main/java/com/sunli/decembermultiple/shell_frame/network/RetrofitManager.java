@@ -9,7 +9,6 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import rx.Observer;
@@ -17,7 +16,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class RetrofitManager<T> {
-    private final String BASE_URL = "http://172.17.8.100/small/";
+    private final String BASE_URL = "http://mobile.bwstudent.com/small/";
 
     private static RetrofitManager retrofitManager;
     private BaseApis baseApis;
@@ -30,14 +29,14 @@ public class RetrofitManager<T> {
     }
 
     public RetrofitManager() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        /*HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY); */
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(15, TimeUnit.SECONDS);
         builder.readTimeout(15, TimeUnit.SECONDS);
         builder.writeTimeout(15, TimeUnit.SECONDS);
-        builder.addInterceptor(interceptor);
+        builder.addInterceptor(new CustomIntercept());
         builder.retryOnConnectionFailure(true);
         OkHttpClient okClient = builder.build();
 

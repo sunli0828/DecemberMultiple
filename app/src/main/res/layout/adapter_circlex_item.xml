@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_400"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/coners">
+        <ImageView
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:src="@mipmap/ic_launcher_round"
+            android:id="@+id/adapter_circlex_item_head_icon"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_10"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="来日可期"
+            android:textSize="@dimen/sp_14"
+            android:textColor="#666666"
+            android:layout_toRightOf="@id/adapter_circlex_item_head_icon"
+            android:id="@+id/adapter_circlex_item_text_name"
+            android:layout_marginTop="@dimen/dp_25"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="来日可期"
+            android:textSize="@dimen/sp_10"
+            android:textColor="#666666"
+            android:layout_toRightOf="@id/adapter_circlex_item_text_name"
+            android:id="@+id/adapter_circlex_item_text_time"
+            android:layout_marginTop="@dimen/dp_28"
+            android:layout_marginLeft="@dimen/dp_130"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_below="@id/adapter_circlex_item_head_icon"
+            android:id="@+id/adapter_circlex_item_text_artcile"
+            android:text="来日可期"
+            android:textSize="@dimen/sp_12"
+            android:textColor="#666666"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_140"
+            android:layout_below="@id/adapter_circlex_item_text_artcile"
+            android:id="@+id/adapter_circlex_item_icon"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_centerHorizontal="true"/>
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:src="@mipmap/common_btn_prise_n_hdpi"
+            android:layout_below="@id/adapter_circlex_item_icon"
+            android:id="@+id/adapter_circlex_item_prise_icon"
+            android:layout_marginLeft="@dimen/dp_247"
+
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_10"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_22"
+            android:id="@+id/adapter_circlex_item_text_prisenum"
+            android:text="123"
+            android:textSize="@dimen/sp_12"
+            android:textColor="#666666"
+            android:layout_below="@id/adapter_circlex_item_icon"
+            android:layout_toRightOf="@id/adapter_circlex_item_prise_icon"/>
+    </RelativeLayout>
+
+</RelativeLayout>

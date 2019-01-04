@@ -12,13 +12,15 @@ import android.widget.Toast;
 
 import com.sunli.decembermultiple.commenpage.HomePageActivity;
 import com.sunli.decembermultiple.R;
-import com.sunli.decembermultiple.shell_frame.bean.LoginBean;
+import com.sunli.decembermultiple.loginorenroll.bean.LoginBean;
 import com.sunli.decembermultiple.shell_frame.mvp.presenter.IPresenterImpl;
 import com.sunli.decembermultiple.shell_frame.mvp.view.IView;
 import com.sunli.decembermultiple.shell_frame.network.ApiUtils;
 import com.sunli.decembermultiple.shell_frame.network.Constants;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements IView {
     private String number;
     private String pwd;
     private boolean ck_remember;
+    private boolean ischeck;
+    private boolean isv;
+    private String userId, sessionId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +61,9 @@ public class MainActivity extends AppCompatActivity implements IView {
 
         number = edit_number.getText().toString();
         pwd = edit_pwd.getText().toString();
-        sharedPreferences = getSharedPreferences("Data", MODE_PRIVATE);
-        edit = sharedPreferences.edit();
-        ck_remember = sharedPreferences.getBoolean("ck_remember", false);
+
+
+     //   ck_remember = sharedPreferences.getBoolean("ck_remember", false);
 
     }
 
@@ -86,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements IView {
         params.put(Constants.POST_BODY_KEY_LOGIN_PHONE, edit_number.getText().toString());
         params.put(Constants.POST_BODY_KEY_LOGIN_PASSWORD, edit_pwd.getText().toString());
         iPresenter.startRequestPost(ApiUtils.POST_URL_USER_LOGIN, params, LoginBean.class);
+
     }
 
     //游客模式
@@ -96,15 +102,19 @@ public class MainActivity extends AppCompatActivity implements IView {
 
     //记住密码勾选
     @OnCheckedChanged(R.id.activity_main_ckbox_remember_pwd)
-    public void ckboxRememberPwdChecked() {
-        if(ck_remember){
-            String num = sharedPreferences.getString("name", null);
-            String pwds = sharedPreferences.getString("pwd", null);
-            edit_pwd.setText(pwds);
-            edit_number.setText(num);
+    public void ckboxRememberPwdChecked(){
+        if(ischeck){
+            isv = ischeck;
+            edit.putBoolean("isc",ischeck);
+            edit.commit();
         }else{
-            edit.remove("ck_remember");
+            edit.putBoolean("isc",ischeck);
+            edit.clear();
+            edit.commit();
+            isv = ischeck;
         }
+        ischeck = !ischeck;
+
     }
 
     @Override
@@ -112,6 +122,14 @@ public class MainActivity extends AppCompatActivity implements IView {
         LoginBean bean = (LoginBean) data;
         Toast.makeText(this, bean.getMessage(), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(MainActivity.this, HomePageActivity.class));
+
+        LoginBean.ResultBean result = bean.getResult();
+        if (result != null) {
+            sharedPreferences = getSharedPreferences("Header", MODE_PRIVATE);
+            sharedPreferences.edit().putString("userId", result.getUserId() + "").commit();
+            sharedPreferences.edit().putString("sessionId", result.getSessionId() + "").commit();
+            edit = sharedPreferences.edit();
+        }
     }
 
     @Override

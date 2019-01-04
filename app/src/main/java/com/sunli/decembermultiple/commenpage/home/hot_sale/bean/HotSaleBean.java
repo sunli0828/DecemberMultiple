@@ -118,7 +118,7 @@ public class HotSaleBean {
                 private int commodityId;
                 private String commodityName;
                 private String masterPic;
-                private int price;
+                private String price;
                 private int saleNum;
 
                 public int getCommodityId() {
@@ -145,11 +145,11 @@ public class HotSaleBean {
                     this.masterPic = masterPic;
                 }
 
-                public int getPrice() {
+                public String getPrice() {
                     return price;
                 }
 
-                public void setPrice(int price) {
+                public void setPrice(String price) {
                     this.price = price;
                 }
 

@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.RadioGroup;
 
 import com.sunli.decembermultiple.R;
@@ -21,6 +22,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private RadioGroup radioGroup;
+    private HomeFragment homeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,8 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         final List<Fragment> list = new ArrayList<>();
-        list.add(new HomeFragment());
+        homeFragment = new HomeFragment();
+        list.add(homeFragment);
         list.add(new CircleFragment());
         list.add(new ListFragment());
         list.add(new MyFragment());
@@ -108,4 +111,13 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK ){
+            homeFragment.getBackData(true);
+        }
+        return false;
+    }
+
 }

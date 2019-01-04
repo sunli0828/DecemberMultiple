@@ -1,6 +1,7 @@
 package com.sunli.decembermultiple.commenpage.home.classify_menu.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -25,6 +26,7 @@ public class FirstCategoryAdapter extends RecyclerView.Adapter<FirstCategoryAdap
 
     public void setList(List<FirstCategoryBean.ResultBean> list) {
         this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -45,6 +47,7 @@ public class FirstCategoryAdapter extends RecyclerView.Adapter<FirstCategoryAdap
                     parentCallbackListener.parentCallbackListener(list.get(i).getId());
                     parentCallbackListener.parentCallbackListener(list.get(i).getName());
                 }
+                holder.textView.setTextColor(Color.RED);
             }
         });
     }

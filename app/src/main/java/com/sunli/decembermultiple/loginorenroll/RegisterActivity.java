@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sunli.decembermultiple.R;
-import com.sunli.decembermultiple.shell_frame.bean.EnRollBean;
+import com.sunli.decembermultiple.loginorenroll.bean.EnRollBean;
 import com.sunli.decembermultiple.shell_frame.mvp.presenter.IPresenterImpl;
 import com.sunli.decembermultiple.shell_frame.mvp.view.IView;
 import com.sunli.decembermultiple.shell_frame.network.ApiUtils;

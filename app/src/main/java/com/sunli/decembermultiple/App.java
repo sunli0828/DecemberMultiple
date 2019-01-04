@@ -1,6 +1,7 @@
 package com.sunli.decembermultiple;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Environment;
 
 import com.facebook.cache.disk.DiskCacheConfig;
@@ -14,10 +15,13 @@ import java.io.File;
  * @Data 2019/1/2
  */
 public class App extends Application {
+
+    private static Context mContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        File sd = Environment.getExternalStorageDirectory();
+        /*File sd = Environment.getExternalStorageDirectory();
         String mPath = sd.getPath() + "/image";
         File file = new File(mPath);
         if (!file.exists()) {
@@ -30,6 +34,13 @@ public class App extends Application {
                                 .build()
                 )
                 .build()
-        );
+        );*/
+        Fresco.initialize(this);
+        mContext = getApplicationContext();
     }
+
+    public static Context getApplication() {
+        return mContext;
+    }
+    private long exitTime = 0;
 }

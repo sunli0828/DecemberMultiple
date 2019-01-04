@@ -1,5 +1,7 @@
 package com.sunli.decembermultiple.shell_frame.mvp.model;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.sunli.decembermultiple.shell_frame.mvp.callback.ICallBack;
 import com.sunli.decembermultiple.shell_frame.network.RetrofitManager;
@@ -52,6 +54,7 @@ public class IModelImpl<T> implements IModel {
                     e.printStackTrace();
                     if (iCallBack != null) {
                         iCallBack.setDataFail(e.getMessage());
+                        Log.i("AS",e.getMessage());
                     }
                 }
             }

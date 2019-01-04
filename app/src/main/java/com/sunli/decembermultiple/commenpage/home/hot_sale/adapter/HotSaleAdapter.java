@@ -1,7 +1,6 @@
 package com.sunli.decembermultiple.commenpage.home.hot_sale.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,9 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.controller.AbstractDraweeController;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.bumptech.glide.Glide;
 import com.sunli.decembermultiple.R;
 import com.sunli.decembermultiple.commenpage.home.hot_sale.bean.HotSaleBean;
 
@@ -23,13 +20,18 @@ import java.util.List;
  * @Data 2019/1/2
  */
 public class HotSaleAdapter extends RecyclerView.Adapter<HotSaleAdapter.HotSaleViewHolder> {
-    private List<HotSaleBean.ResultBean.RxxpBean> rxxpBeanList;
+    private List<HotSaleBean.ResultBean.RxxpBean.CommodityListBean> rxxpBeanList;
     private Context rxxpContext;
     private HotSaleViewHolder hotSaleViewHolder;
 
     public HotSaleAdapter(Context rxxpContext) {
         this.rxxpContext = rxxpContext;
         rxxpBeanList = new ArrayList<>();
+    }
+
+    public void setCommodityListBeanList(List<HotSaleBean.ResultBean.RxxpBean.CommodityListBean> rxxpBeanList) {
+        this.rxxpBeanList = rxxpBeanList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -42,12 +44,11 @@ public class HotSaleAdapter extends RecyclerView.Adapter<HotSaleAdapter.HotSaleV
 
     @Override
     public void onBindViewHolder(@NonNull HotSaleViewHolder hotSaleViewHolder, int i) {
-        Uri uri = Uri.parse(rxxpBeanList.get(i).getCommodityList().get(i).getMasterPic());
-        AbstractDraweeController controller = Fresco.newDraweeControllerBuilder()
-                .setUri(uri)
-                .setAutoPlayAnimations(true)
-                .build();
-       // hotSaleViewHolder.icon.setcon(controller);
+
+        Glide.with(rxxpContext).load(rxxpBeanList.get(i).getMasterPic()).into(hotSaleViewHolder.icon);
+        hotSaleViewHolder.text_name.setText(rxxpBeanList.get(i).getCommodityName());
+        hotSaleViewHolder.text_price.setText("¥" + rxxpBeanList.get(i).getPrice());
+
     }
 
     @Override
@@ -56,7 +57,7 @@ public class HotSaleAdapter extends RecyclerView.Adapter<HotSaleAdapter.HotSaleV
     }
 
     public class HotSaleViewHolder extends RecyclerView.ViewHolder {
-        SimpleDraweeView icon;
+        ImageView icon;
         TextView text_name, text_price;
         public HotSaleViewHolder(@NonNull View itemView) {
             super(itemView);
