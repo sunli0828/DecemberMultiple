@@ -74,7 +74,7 @@
             android:layout_marginRight="@dimen/dp_10"
             android:layout_marginTop="@dimen/dp_22"
             android:id="@+id/adapter_circlex_item_text_prisenum"
-            android:text="123"
+            android:text="123456"
             android:textSize="@dimen/sp_12"
             android:textColor="#666666"
             android:layout_below="@id/adapter_circlex_item_icon"
